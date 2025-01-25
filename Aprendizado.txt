@@ -1,0 +1,4 @@
+O multi-stage build pode reduzir bastante o custo de armazenamento de imagens.
+Como aplicar multi-stage build em um Dockerfile já existente.
+Como subir um container MySQL.
+Como comunicar diferentes containers através da rede do Docker.
