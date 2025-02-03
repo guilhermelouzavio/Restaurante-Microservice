@@ -2,3 +2,11 @@ O multi-stage build pode reduzir bastante o custo de armazenamento de imagens.
 Como aplicar multi-stage build em um Dockerfile já existente.
 Como subir um container MySQL.
 Como comunicar diferentes containers através da rede do Docker.
+
+
+Nessa aula aprendemos:
+
+Como consumir dados de uma fila do RabbitMQ através de uma aplicação .NET.
+Como executar serviços em segundo plano dentro de uma aplicação .NET.
+Como containerizar e utilizar o RabbitMQ.
+Subir diversos containers em uma mesma rede a fim de validar o fluxo esperado.

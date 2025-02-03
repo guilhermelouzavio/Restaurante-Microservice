@@ -62,11 +62,11 @@ public class RestauranteController : ControllerBase
         var restauranteReadDto = _mapper.Map<RestauranteReadDto>(restaurante);
 
 
-        await _itemHttpClient.EnviaRestauranteParaItem(restauranteReadDto);
+        //await _itemHttpClient.EnviaRestauranteParaItem(restauranteReadDto);
 
-        //var restaurantePublishedDto = _mapper.Map<RestaurantePublishedDto>(restauranteReadDto);
-        //restaurantePublishedDto.Evento = "Restaurante_Published";
-        //_messageBusClient.PublishRestaurante(restaurantePublishedDto);
+        var restaurantePublishedDto = _mapper.Map<RestaurantePublishedDto>(restauranteReadDto);
+        restaurantePublishedDto.Evento = "Restaurante_Published";
+        _messageBusClient.PublishRestaurante(restaurantePublishedDto);
 
 
         return CreatedAtRoute(nameof(GetRestauranteById), new { restauranteReadDto.Id }, restauranteReadDto);
