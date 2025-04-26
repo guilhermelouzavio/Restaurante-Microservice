@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: restaurante-lb
+spec:
+  type: LoadBalancer
+  selector: 
+    app: restaurante-api
+  ports:
+    - port: 80
+      targetPort: 80

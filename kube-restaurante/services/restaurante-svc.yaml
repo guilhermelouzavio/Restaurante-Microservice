@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: restaurante-service
+spec:
+  selector:
+    app: restaurante-api
+  ports:
+    - port: 80

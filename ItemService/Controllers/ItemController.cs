@@ -33,7 +33,7 @@ public class ItemController : ControllerBase
         return Ok(_mapper.Map<IEnumerable<ItemReadDto>>(itens));
     }
 
-    [HttpGet("{ItemId}", Name = "GetItemForRestaurante")]
+    [HttpGet("{itemId}", Name = "GetItemForRestaurante")]
     public ActionResult<ItemReadDto> GetItemForRestaurante(int restauranteId, int itemId)
     {
         if (!_repository.RestauranteExiste(restauranteId))

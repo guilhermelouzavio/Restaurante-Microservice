@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: item-deployment
+  labels:
+    app: item-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: item-api
+  template:
+    metadata:
+      labels:
+        app: item-api
+    spec:
+      containers:
+        - name: item-api
+          image: 442740779349.dkr.ecr.us-east-2.amazonaws.com/itemservice:1.4
+          ports:
+            - containerPort: 80

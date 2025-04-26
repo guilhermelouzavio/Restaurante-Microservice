@@ -1,7 +1,8 @@
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using ItemService.Data;
 using ItemService.Dtos;
+using ItemService.Services;
 
 namespace ItemService.Controllers;
 
@@ -9,19 +10,21 @@ namespace ItemService.Controllers;
 [ApiController]
 public class RestauranteController : ControllerBase
 {
-    private readonly IItemRepository _repository;
+   
     private readonly IMapper _mapper;
+    private readonly IRestauranteService _restauranteService;
 
-    public RestauranteController(IItemRepository repository, IMapper mapper)
+    public RestauranteController(IMapper mapper, IRestauranteService restauranteService)
     {
-        _repository = repository;
+     
         _mapper = mapper;
+        _restauranteService = restauranteService;
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<RestauranteReadDto>> GetRestaurantes()
+    public async Task<ActionResult<IEnumerable<RestauranteReadDto>>> GetRestaurantes()
     {
-        var restaurantes = _repository.GetAllRestaurantes();
+        var restaurantes = await _restauranteService.GetAllRestaurante();
 
         return Ok(_mapper.Map<IEnumerable<RestauranteReadDto>>(restaurantes));
     }
@@ -36,6 +39,6 @@ public class RestauranteController : ControllerBase
     //[HttpPost]
     //public IActionResult TestInboundConnection()
     //{
-    //    return Ok("Conex�o ok!");
+    //    return Ok("Conexão ok!");
     //}
 }

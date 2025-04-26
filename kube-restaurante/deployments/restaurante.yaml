@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restaurante-deployment
+  labels:
+    app: restaurante-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restaurante-api
+  template:
+    metadata:
+      labels:
+        app: restaurante-api
+    spec:
+      containers:
+        - name: restaurante-api
+          image: 442740779349.dkr.ecr.us-east-2.amazonaws.com/restauranteservice:1.2
+          ports:
+            - containerPort: 80
+          env:
+            - name: ConnectionStrings__RestauranteConnection
+              value: "server=alura-db.cn4gmgow2szr.us-east-2.rds.amazonaws.com;database=restaurantedb;user=admin;password=1234567890"
+            - name: RabbitMqHost
+              value: "rabbitmq" #nome do serviço que criamos para rabbitMQ
+            - name: RabbitMqPort
+              value: "5672"
